@@ -6,7 +6,7 @@ const userName = document.querySelector('#name');
 userName.focus();
 
 // Display other jobs input when the other option is selected
-// get Jobs select 
+// get Jobs select
 const selectJobs = document.getElementById('title');
 // Add on change event listener
 selectJobs.addEventListener("change", () => {
@@ -26,23 +26,26 @@ selectJobs.addEventListener("change", () => {
 // Handle the design select change
 // get select design
 const selectDesign = document.getElementById('design');
+const selectColor = document.getElementById('color');
+selectColor.disabled = true;
 // Add on change event listener
 selectDesign.addEventListener("change", () => {
     // Get selected value
     const currentSelectedDesign = selectDesign.value;
     // Get other color select element
-    const selectColor = document.getElementById('color');
+
     selectColor.removeAttribute('disabled');
     selectColor.querySelectorAll('option').forEach(element => {
-        console.log(element);
-        if(element.getAttribute('data-theme') === currentSelectedDesign) {
-            element.removeAttribute('disabled');
-        } else {
-            element.setAttribute('disabled','disabled');
-        }
+      if(element.getAttribute('data-theme') === currentSelectedDesign) {
+        element.removeAttribute('disabled');
+        element.hidden=false;
+
+      } else {
+        element.setAttribute('disabled','disabled');
+        element.hidden=true;
+      }
     });
 });
-
 // get all activities checkboxes
 const allActivitiesCheckBoxes = document.querySelectorAll('.activities-box input[type="checkbox"]');
 // Add event listener to all activities checkboxes
@@ -124,7 +127,7 @@ const isEmpty = function(str) {
 }
 
 // Check if email is valid
-const validateEmail = function() 
+const validateEmail = function()
 {
  const email = document.querySelector('#email');
  if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email.value) && !isEmpty(email.value))
