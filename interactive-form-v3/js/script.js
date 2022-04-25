@@ -4,6 +4,8 @@ let currentTotal = 0;
 const userName = document.querySelector('#name');
 // Add a focus state on the name input field
 userName.focus();
+document.getElementById('payment').value = 'credit-card';
+document.getElementById('credit-card').style.display = 'block';
 
 // Display other jobs input when the other option is selected
 // get Jobs select
@@ -175,7 +177,7 @@ const validateCardData = function() {
         ccNum.classList.remove('error-border');
         zip.closest('label').classList.remove('not-valid');
         zip.closest('label').classList.add('valid');
-        document.getElementById('cc-hint').style.display = 'none';
+        document.getElementById('zip-hint').style.display = 'none';
     }
     const cvv = document.querySelector('#cvv');
     if(isEmpty(cvv.value) || cvv.value.length !== 3 || isNaN(cvv.value)) {
