@@ -37,8 +37,9 @@ selectDesign.addEventListener("change", () => {
     // Get other color select element
 
     selectColor.removeAttribute('disabled');
+    selectColor.selectedIndex = 0;
     selectColor.querySelectorAll('option').forEach(element => {
-      if(element.getAttribute('data-theme') === currentSelectedDesign) {
+      if(  element.getAttribute('data-theme') === currentSelectedDesign ) {
         element.removeAttribute('disabled');
         element.hidden=false;
 
@@ -76,11 +77,12 @@ allPaymentMethodList.addEventListener("change", () => {
 
 // Set form submit validation
 const formSubmit = function(e) {
-    e.preventDefault();
-    // Validate form
-    if(validateForm()) {
 
-    } else {
+    // Validate form
+    if(!validateForm()) {
+
+    e.preventDefault();
+
 
     }
 }
